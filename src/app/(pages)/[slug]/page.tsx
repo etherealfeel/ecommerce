@@ -10,6 +10,7 @@ import { fetchDocs } from '../../_api/fetchDocs'
 import { Blocks } from '../../_components/Blocks'
 import Categories from '../../_components/Categories'
 import { Hero } from '../../_components/Hero'
+import Promotion from '../../_components/Promotion'
 import { generateMeta } from '../../_utilities/generateMeta'
 import { Gutter } from './../../_components/Gutter/index'
 
@@ -56,7 +57,10 @@ export default async function Page({ params: { slug = 'home' } }) {
       {slug === 'home' ? (
         <section>
           <Hero {...hero} />
-          <Gutter className={classes.home}>{<Categories categories={categories} />}</Gutter>
+          <Gutter className={classes.home}>
+            <Categories categories={categories} />
+            <Promotion />
+          </Gutter>
         </section>
       ) : (
         <>
