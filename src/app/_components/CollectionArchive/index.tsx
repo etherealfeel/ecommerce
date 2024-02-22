@@ -75,10 +75,6 @@ export const CollectionArchive: React.FC<Props> = props => {
   const isRequesting = useRef(false)
   const [page, setPage] = useState(1)
 
-  const categories = (catsFromProps || [])
-    .map(cat => (typeof cat === 'object' ? cat?.id : cat))
-    .join(',')
-
   const scrollToRef = useCallback(() => {
     const { current } = scrollRef
     if (current) {
@@ -114,7 +110,7 @@ export const CollectionArchive: React.FC<Props> = props => {
           depth: 1,
           limit,
           page,
-          sort,
+          sortTerm,
           where: {
             ...(categoryFilters && categoryFilters.length > 0
               ? {
@@ -165,7 +161,7 @@ export const CollectionArchive: React.FC<Props> = props => {
     return () => {
       if (timer) clearTimeout(timer)
     }
-  }, [page, categoryFilters, relationTo, onResultChange, sort, limit, populateBy])
+  }, [page, categoryFilters, relationTo, onResultChange, sortTerm, limit, populateBy])
 
   return (
     <div className={[classes.collectionArchive, className].filter(Boolean).join(' ')}>
