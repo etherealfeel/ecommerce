@@ -6,6 +6,12 @@
   gap: 30px;
   margin-bottom: 30px;
 
+  @include mid-break {
+    display: block; 
+    margin: 0 auto; 
+    width: 80%;
+  }
+
   @include small-break {
     grid-template-columns: 1fr;
   }
